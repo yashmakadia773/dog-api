@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <style>
+            img {
+                width: auto;
+            }
+        </style>
+</head>
+
+<body>
+    <button onclick="cl()">click</button>
+    <div id="img"></div>
+
+
+    <script>
+        function cl() {
+            $.ajax({
+                url: "https://dog.ceo/api/breeds/image/random",
+                method: "GET",
+                success: (data) => {
+                    const img = document.getElementById("img");
+                    img.innerHTML = "";
+                    const img_body = document.createElement("p");
+                    img_body.innerHTML = `
+                    <span>${"<img src='" + data.message + "'>"}</span>
+                `;
+
+                    img.appendChild(img_body);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
